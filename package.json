@@ -2,7 +2,7 @@
   "name": "superheroes-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./server.js",
     "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/kate-zahorui/superheroes-backend/issues"
   },
-  "homepage": "https://github.com/kate-zahorui/superheroes-backend#readme",
+  "homepage": "https://superheroes-backend-server.herokuapp.com",
   "dependencies": {
     "express": "^4.18.1",
     "cors": "2.8.5",
