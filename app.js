@@ -1,8 +1,9 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+require("dotenv").config();
 
-const heroesRouter = require("./routes/api/heroes");
+const superheroesRouter = require("./routes/api/superheroes");
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/heroes", heroesRouter);
+app.use("/api/superheroes", superheroesRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
