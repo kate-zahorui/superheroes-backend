@@ -28,7 +28,7 @@ const superheroSchema = new Schema(
     },
     images: {
       type: [String],
-      required: false,
+      required: true,
     },
   },
   { versionKey: false, timestamps: true }
@@ -42,7 +42,7 @@ const addSchema = Joi.object({
   originDescription: Joi.string().required(),
   superpowers: Joi.string().required(),
   catchPhrase: Joi.string().required(),
-  // images: Joi.string(),
+  images: Joi.array().items(Joi.any()),
 });
 
 const Superhero = model("superhero", superheroSchema);
