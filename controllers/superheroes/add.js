@@ -3,17 +3,19 @@ const { uploadCloud } = require("../../helpers");
 const { Superhero } = require("../../models/superhero");
 
 const add = async (req, res, next) => {
-  const imagesURLs = req.files.map((item) => item.originalname);
-
-  const reqBody = {
-    ...req.body,
-    images: imagesURLs,
-  };
-
   try {
-    req.files.map(async (item) => {
-      uploadCloud(item.path);
-    });
+    const files = req.files;
+    const imagesURLs = [];
+
+    for (const file of files) {
+      const uploadedImage = await uploadCloud(file.path);
+      imagesURLs.push(uploadedImage.public_id);
+    }
+
+    const reqBody = {
+      ...req.body,
+      images: imagesURLs,
+    };
 
     const newHero = await Superhero.create(reqBody);
     res.status(201).json(newHero);

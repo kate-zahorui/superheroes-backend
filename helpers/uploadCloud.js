@@ -6,15 +6,15 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
-const uploadCloud = (path) => {
-  return new Promise((resolve, reject) => {
+const uploadCloud = async (path) => {
+  return await new Promise((resolve, reject) => {
     cloudinary.uploader.upload(
       path,
       { folder: "superheroes" },
       (error, result) => {
-        console.log(result);
         if (error) reject(error);
-        if (result) resolve;
+        // if (result)
+        resolve;
       }
     );
   });
